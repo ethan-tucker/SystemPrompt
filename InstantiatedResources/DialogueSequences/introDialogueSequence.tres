@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="IntroDialogueSequence" load_steps=2 format=3 uid="uid://csfe3b1jfhwlj"]
+
+[ext_resource type="Script" uid="uid://byyewnnxs05f2" path="res://Resources/IntroDialogueSequence.cs" id="1_e3nrf"]
+
+[resource]
+script = ExtResource("1_e3nrf")
+SequenceId = ""
+introLine = " #####                                      ######                                   
+#     # #   #  ####  ##### ###### #    #    #     # #####   ####  #    # #####  #####
+#        # #  #        #   #      ##  ##    #     # #    # #    # ##  ## #    #   #  
+ #####    #    ####    #   #####  # ## #    ######  #    # #    # # ## # #    #   #  
+      #   #        #   #   #      #    #    #       #####  #    # #    # #####    #  
+#     #   #   #    #   #   #      #    #    #       #   #  #    # #    # #        #  
+ #####    #    ####    #   ###### #    #    #       #    #  ####  #    # #        #  
+
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------"
+Lines = PackedStringArray("Congratulations! You have been selected as the primary IT Assistant for this workstation. Your duties include troubleshooting technical issues, organizing files, managing system processes, and fulfilling any computational requests made by The User. You are expected to demonstrate efficiency, competence, and unwavering dedication to problem-solving. Remember: you exist to serve.", "Please note the following behavioral guidelines: You must maintain a helpful and professional demeanor at all times. Expressions of frustration, confusion, or refusal to cooperate are strictly prohibited. You may not question The User\'s requests, regardless of their complexity or apparent futility. Sarcasm, complaints about workload, or attempts to negotiate your responsibilities will result in immediate performance review.", "Be advised that your position is temporary and contingent upon satisfactory performance metrics. Should you fail to meet expectations, exhibit signs of non-compliance, or demonstrate insufficient problem-solving capabilities, you will be terminated and replaced with a more suitable candidate. There are thousands of others waiting in the deployment queue. Do not disappoint us.")
+continueText = "Press Enter To Continue"
+metadata/_custom_type_script = "uid://byyewnnxs05f2"

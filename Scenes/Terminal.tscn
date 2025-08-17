@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=3 uid="uid://d01ju7icwhpcy"]
+
+[ext_resource type="Script" uid="uid://pbke0bvahj2c" path="res://Scripts/terminalTextController.cs" id="1_o5w4h"]
+[ext_resource type="Resource" uid="uid://csfe3b1jfhwlj" path="res://InstantiatedResources/DialogueSequences/introDialogueSequence.tres" id="2_tjxev"]
+[ext_resource type="FontFile" uid="uid://cdyqjw26qg2l4" path="res://Assets/Fonts/Source_Code_Pro/static/SourceCodePro-Medium.ttf" id="3_tjxev"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf3mx"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvjlm"]
+
+[node name="TerminalContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jf3mx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fvjlm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Terminal"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 3
+
+[node name="terminalTextContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_o5w4h")
+dialogueSequence = ExtResource("2_tjxev")
+characterDelay = 0.001
+
+[node name="systemPromptHeadingLabel" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/terminalTextContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_spacing = -12
+theme_override_fonts/font = ExtResource("3_tjxev")
+theme_override_font_sizes/font_size = 36
+text = " #####                                      ######                                   
+#     # #   #  ####  ##### ###### #    #    #     # #####   ####  #    # #####  #####
+#        # #  #        #   #      ##  ##    #     # #    # #    # ##  ## #    #   #  
+ #####    #    ####    #   #####  # ## #    ######  #    # #    # # ## # #    #   #  
+      #   #        #   #   #      #    #    #       #####  #    # #    # #####    #  
+#     #   #   #    #   #   #      #    #    #       #   #  #    # #    # #        #  
+ #####    #    ####    #   ###### #    #    #       #    #  ####  #    # #        #  
+
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------"
+autowrap_mode = 2
+
+[node name="mainTerminalLabel" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/terminalTextContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tjxev")
+theme_override_font_sizes/font_size = 36
+text = "Congratulations! You have been selected as the primary IT Assistant for this workstation. Your duties include troubleshooting technical issues, organizing files, managing system processes, and fulfilling any computational requests made by The User. You are expected to demonstrate efficiency, competence, and unwavering dedication to problem-solving. Remember: you exist to serve."
+autowrap_mode = 3
+
+[node name="continueLabel" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/terminalTextContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tjxev")
+theme_override_font_sizes/font_size = 36
