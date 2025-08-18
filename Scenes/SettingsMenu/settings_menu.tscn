@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqjmgfda2pfl7"]
+
+[ext_resource type="Script" uid="uid://dbokeov4jr3ad" path="res://Scripts/SettingsWindow/SettingsManager.cs" id="1_7vxyt"]
+[ext_resource type="PackedScene" uid="uid://cdrnl6v8crffm" path="res://Scenes/SettingsMenu/SettingsTab.tscn" id="1_icv2g"]
+[ext_resource type="PackedScene" uid="uid://ilnf2f7hce5b" path="res://Scenes/SettingsMenu/notifications_window.tscn" id="2_1lds4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oerog"]
+bg_color = Color(0.208175, 0.208176, 0.194205, 1)
+border_width_right = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufg0w"]
+bg_color = Color(0.164706, 0.164706, 0.152941, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -483.0
+offset_right = 488.0
+offset_bottom = 517.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vxyt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oerog")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel"]
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 1000.0
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="SettingsTab" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("_settingsManager") instance=ExtResource("1_icv2g")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+_settingsManager = NodePath("../../../../..")
+
+[node name="SelectedBackgroundColor" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/SettingsTab/HBoxContainer/Control3" index="0"]
+visible = true
+
+[node name="SettingsTab2" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("_settingsManager") instance=ExtResource("1_icv2g")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+_settingsManager = NodePath("../../../../..")
+
+[node name="SettingsWindowContainer" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ufg0w")
+
+[node name="NotificationsWindow" parent="HBoxContainer/SettingsWindowContainer" instance=ExtResource("2_1lds4")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="VBoxContainer" parent="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer" index="0"]
+theme_override_constants/separation = 0
+
+[editable path="HBoxContainer/Panel/MarginContainer/VBoxContainer/SettingsTab"]
+[editable path="HBoxContainer/Panel/MarginContainer/VBoxContainer/SettingsTab2"]
+[editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow"]
+[editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection2"]
+[editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton"]
+[editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton2"]
+[editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection"]

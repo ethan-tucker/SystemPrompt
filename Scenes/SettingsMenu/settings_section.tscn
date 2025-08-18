@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmx4aeg8luv1h"]
+
+[ext_resource type="FontFile" uid="uid://cy7o37k57kox1" path="res://Assets/Fonts/Source_Code_Pro/static/SourceCodePro-Regular-noMSDF.ttf" id="1_ye4tv"]
+[ext_resource type="StyleBox" uid="uid://dpgxjniwdbwjw" path="res://Scenes/SettingsMenu/SettingsSectionStyleBox.tres" id="2_du2a4"]
+
+[node name="SettingsSection" type="VBoxContainer"]
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ye4tv")
+theme_override_font_sizes/font_size = 24
+text = "Notifications"
+
+[node name="OuterContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="BackgroundColor" type="Panel" parent="OuterContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_du2a4")
+
+[node name="MarginContainer" type="MarginContainer" parent="OuterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OuterContainer/MarginContainer"]
+layout_mode = 2

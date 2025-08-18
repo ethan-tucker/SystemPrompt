@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://1jegr05f0vfo"]
+
+[ext_resource type="FontFile" uid="uid://cy7o37k57kox1" path="res://Assets/Fonts/Source_Code_Pro/static/SourceCodePro-Regular-noMSDF.ttf" id="1_pewmr"]
+[ext_resource type="StyleBox" uid="uid://nwn5d7nlixmb" path="res://Scenes/SettingsMenu/CheckBoxStyling.tres" id="2_imdh0"]
+[ext_resource type="Texture2D" uid="uid://bcm8ijqjpp8jm" path="res://Assets/Sprites/UIAssets/switchTrue.png" id="2_p5ttx"]
+[ext_resource type="Texture2D" uid="uid://dmac0fd26gurd" path="res://Assets/Sprites/UIAssets/switchFalse.png" id="3_imdh0"]
+
+[node name="ToggleButton" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -2040.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_pewmr")
+theme_override_font_sizes/font_size = 20
+text = "JCloud"
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -324.0
+offset_top = -140.0
+offset_right = -3.05176e-05
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(522.091, 166.545)
+theme_override_styles/focus = ExtResource("2_imdh0")
+theme_override_styles/hover_pressed = ExtResource("2_imdh0")
+theme_override_styles/hover = ExtResource("2_imdh0")
+theme_override_styles/pressed = ExtResource("2_imdh0")
+theme_override_styles/normal = ExtResource("2_imdh0")
+theme_override_icons/checked = ExtResource("2_p5ttx")
+theme_override_icons/unchecked = ExtResource("3_imdh0")
+flat = true
