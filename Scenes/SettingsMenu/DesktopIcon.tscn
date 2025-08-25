@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2xcg5anestg3"]
+
+[ext_resource type="Texture2D" uid="uid://dmgtynub6uucu" path="res://Assets/Sprites/UIAssets/settingsIcon.png" id="1_sotmn"]
+[ext_resource type="Script" uid="uid://c4nli0nvoomfy" path="res://Scripts/DesktopIcon.cs" id="1_ydk0b"]
+[ext_resource type="PackedScene" uid="uid://bqjmgfda2pfl7" path="res://Scenes/SettingsMenu/settings_menu.tscn" id="2_lyvi2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sotmn"]
+bg_color = Color(0.309723, 0.530977, 0.661165, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="DesktopIcon" type="Control"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+script = ExtResource("1_ydk0b")
+RelatedScene = ExtResource("2_lyvi2")
+
+[node name="backgroundColor" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sotmn")
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_sotmn")
+expand_mode = 3

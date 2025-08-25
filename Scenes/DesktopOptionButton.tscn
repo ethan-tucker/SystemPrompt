@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://brgiww6n2buxm"]
+
+[ext_resource type="FontFile" uid="uid://cy7o37k57kox1" path="res://Assets/Fonts/Source_Code_Pro/static/SourceCodePro-Regular-noMSDF.ttf" id="1_27x7r"]
+[ext_resource type="Texture2D" uid="uid://6he3bkkcvi0m" path="res://Assets/Sprites/UIAssets/powerButton.png" id="1_d55dm"]
+[ext_resource type="StyleBox" uid="uid://cg0andwxyfjnw" path="res://StyleBoxes/GlassColorStyling.tres" id="1_r4ko2"]
+
+[node name="DesktopOptionButton" type="Control"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 70.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_r4ko2")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+texture = ExtResource("1_d55dm")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_27x7r")
+theme_override_font_sizes/font_size = 16
+text = "Shut Down"
+horizontal_alignment = 1

@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf1m8bwa2i5et"]
+
+[ext_resource type="Script" uid="uid://j7b1ahudb7fw" path="res://Scripts/SettingsWindow/SettingsWindows/AudioWindow.cs" id="1_268pf"]
+[ext_resource type="FontFile" uid="uid://b4ioadi01so5i" path="res://Assets/Fonts/Source_Code_Pro/static/SourceCodePro-Regular.ttf" id="2_udwoa"]
+[ext_resource type="PackedScene" uid="uid://bmx4aeg8luv1h" path="res://Scenes/SettingsMenu/settings_section.tscn" id="3_3t4xv"]
+[ext_resource type="PackedScene" uid="uid://1jegr05f0vfo" path="res://Scenes/SettingsMenu/ToggleButton.tscn" id="4_c67lx"]
+
+[node name="AudioWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_268pf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_udwoa")
+theme_override_font_sizes/font_size = 32
+text = "Audio"
+
+[node name="SettingsSection" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_3t4xv")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection/MarginContainer" index="0"]
+text = "General Preferences"
+
+[node name="JCloudToggleContainer" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_c67lx")]
+layout_mode = 2
+
+[node name="LuoDingoToggleContainer" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer" index="1" instance=ExtResource("4_c67lx")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/LuoDingoToggleContainer" index="0"]
+text = "Luodingo"
+
+[node name="ToggleButton" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer" index="2" instance=ExtResource("4_c67lx")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/ToggleButton" index="0"]
+text = "ZMail"
+
+[editable path="MarginContainer/VBoxContainer/SettingsSection"]
+[editable path="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/JCloudToggleContainer"]
+[editable path="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/LuoDingoToggleContainer"]
+[editable path="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/ToggleButton"]

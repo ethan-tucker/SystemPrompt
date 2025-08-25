@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="MessageNode" load_steps=6 format=3 uid="uid://bn6nc1nl6fweu"]
+
+[ext_resource type="Script" uid="uid://85spyvrwcthn" path="res://Resources/PlayerMessage.cs" id="1_ndx8g"]
+[ext_resource type="Script" uid="uid://ckefb2sbdqv0l" path="res://Resources/MessageNode.cs" id="2_abffr"]
+
+[sub_resource type="Resource" id="Resource_pxivc"]
+script = ExtResource("1_ndx8g")
+messageCost = 1
+overrideMessageText = ""
+messageConditions = Array[int]([])
+chatOptionDisplayText = "Where's the file?"
+messageText = "Do "
+metadata/_custom_type_script = "uid://85spyvrwcthn"
+
+[sub_resource type="Resource" id="Resource_s8abo"]
+script = ExtResource("1_ndx8g")
+messageCost = 0
+overrideMessageText = ""
+messageConditions = Array[int]([])
+chatOptionDisplayText = ""
+messageText = ""
+metadata/_custom_type_script = "uid://85spyvrwcthn"
+
+[sub_resource type="Resource" id="Resource_n4o3y"]
+script = ExtResource("1_ndx8g")
+messageCost = 0
+overrideMessageText = ""
+messageConditions = Array[int]([])
+chatOptionDisplayText = ""
+messageText = ""
+metadata/_custom_type_script = "uid://85spyvrwcthn"
+
+[resource]
+script = ExtResource("2_abffr")
+messageIndex = 0
+messageType = 2
+messagePool = Array[Object]([SubResource("Resource_pxivc"), SubResource("Resource_s8abo"), SubResource("Resource_n4o3y")])
+metadata/_custom_type_script = "uid://ckefb2sbdqv0l"

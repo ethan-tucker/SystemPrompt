@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="MessageNode" load_steps=4 format=3 uid="uid://dkkl63qnm1vtv"]
+
+[ext_resource type="Script" uid="uid://85spyvrwcthn" path="res://Resources/PlayerMessage.cs" id="1_u5pkx"]
+[ext_resource type="Script" uid="uid://ckefb2sbdqv0l" path="res://Resources/MessageNode.cs" id="2_0a8mr"]
+
+[sub_resource type="Resource" id="Resource_mxr6m"]
+script = ExtResource("1_u5pkx")
+messageCost = 0
+overrideMessageText = ""
+messageConditions = Array[int]([])
+chatOptionDisplayText = "Sir yes sir"
+messageText = "Sir yes sir I will find this file before you know it!"
+metadata/_custom_type_script = "uid://85spyvrwcthn"
+
+[resource]
+script = ExtResource("2_0a8mr")
+messageIndex = 0
+messageType = 0
+messagePool = Array[Object]([SubResource("Resource_mxr6m")])
+metadata/_custom_type_script = "uid://ckefb2sbdqv0l"

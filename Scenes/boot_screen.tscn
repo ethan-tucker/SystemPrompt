@@ -1,0 +1,186 @@
+[gd_scene load_steps=13 format=3 uid="uid://4153pqw8fj4i"]
+
+[ext_resource type="Texture2D" uid="uid://dy2xmyng6v6th" path="res://Assets/Sprites/UIAssets/desktopBackgroundSprite.jpg" id="1_bulw0"]
+[ext_resource type="Script" uid="uid://6mnvi0khmuga" path="res://Scripts/BootScreen/BootScreenManager.cs" id="1_d2g8x"]
+[ext_resource type="PackedScene" uid="uid://brgiww6n2buxm" path="res://Scenes/DesktopOptionButton.tscn" id="2_fpji4"]
+[ext_resource type="Texture2D" uid="uid://bprh5v3v58q64" path="res://Assets/Sprites/UIAssets/account.png" id="2_rppc3"]
+[ext_resource type="Texture2D" uid="uid://cc4y1aota3f3s" path="res://Assets/Sprites/UIAssets/left.png" id="3_2jyem"]
+[ext_resource type="FontFile" uid="uid://djvbsyqqk4hm6" path="res://Assets/Fonts/Source_Code_Pro/static/SourceCodePro-Bold.ttf" id="3_aq07n"]
+[ext_resource type="FontFile" uid="uid://cy7o37k57kox1" path="res://Assets/Fonts/Source_Code_Pro/static/SourceCodePro-Regular-noMSDF.ttf" id="4_aq07n"]
+[ext_resource type="Texture2D" uid="uid://cdal3awjo1d6n" path="res://Assets/Sprites/UIAssets/settings.png" id="4_pouvy"]
+[ext_resource type="Texture2D" uid="uid://ybacw7n7dj5u" path="res://Assets/Fonts/Source_Code_Pro/static/help.png" id="5_2pnie"]
+[ext_resource type="StyleBox" uid="uid://c0som0lwdugn3" path="res://StyleBoxes/TextboxStylingBox.tres" id="5_yu7g1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rppc3"]
+bg_color = Color(0.6, 0.6, 0.6, 0.352941)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu7g1"]
+content_margin_left = 15.0
+bg_color = Color(0.31802, 0.31802, 0.31802, 0.341176)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="BootScreen" type="Control" node_paths=PackedStringArray("PasswordInput")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d2g8x")
+PasswordInput = NodePath("Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PasswordInputField")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bulw0")
+expand_mode = 3
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -200.0
+offset_right = 148.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rppc3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = ExtResource("2_rppc3")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_aq07n")
+theme_override_font_sizes/font_size = 24
+text = "Andrew lrvine"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="PasswordInputField" type="LineEdit" parent="Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_aq07n")
+theme_override_styles/focus = ExtResource("5_yu7g1")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_yu7g1")
+theme_override_styles/normal = ExtResource("5_yu7g1")
+placeholder_text = "Enter Password"
+max_length = 15
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+secret = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_2pnie")
+expand_mode = 3
+
+[node name="BottomTaskBarController" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -115.0
+offset_right = 97.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="BottomTaskBarController"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="DesktopIcons" type="HBoxContainer" parent="BottomTaskBarController/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 90
+
+[node name="BackButton" parent="BottomTaskBarController/MarginContainer/DesktopIcons" instance=ExtResource("2_fpji4")]
+layout_mode = 2
+
+[node name="TextureRect" parent="BottomTaskBarController/MarginContainer/DesktopIcons/BackButton/VBoxContainer/Control" index="1"]
+texture = ExtResource("3_2jyem")
+
+[node name="Label" parent="BottomTaskBarController/MarginContainer/DesktopIcons/BackButton/VBoxContainer" index="1"]
+text = "Back"
+
+[node name="PowerButton" parent="BottomTaskBarController/MarginContainer/DesktopIcons" instance=ExtResource("2_fpji4")]
+layout_mode = 2
+
+[node name="SettingsButton" parent="BottomTaskBarController/MarginContainer/DesktopIcons" instance=ExtResource("2_fpji4")]
+layout_mode = 2
+
+[node name="TextureRect" parent="BottomTaskBarController/MarginContainer/DesktopIcons/SettingsButton/VBoxContainer/Control" index="1"]
+texture = ExtResource("4_pouvy")
+
+[node name="Label" parent="BottomTaskBarController/MarginContainer/DesktopIcons/SettingsButton/VBoxContainer" index="1"]
+text = "Settings"
+
+[editable path="BottomTaskBarController/MarginContainer/DesktopIcons/BackButton"]
+[editable path="BottomTaskBarController/MarginContainer/DesktopIcons/SettingsButton"]

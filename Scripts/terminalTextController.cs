@@ -31,8 +31,6 @@ public partial class terminalTextController : VBoxContainer
 
 		scrollContainer = GetParent<ScrollContainer>();
 
-		scrollContainer.VerticalScrollMode = ScrollContainer.ScrollMode.Disabled;
-
 		GD.Print(dialogueSequence.Lines.Length);
 
 		if (dialogueSequence != null && dialogueSequence.Lines.Length > 0)
@@ -91,7 +89,6 @@ public partial class terminalTextController : VBoxContainer
 	private async void TypeText(string text, Label targetLabel)
 	{
 		isTyping = true;
-		scrollContainer.VerticalScrollMode = ScrollContainer.ScrollMode.Disabled;
 
 		// Type each character with a delay
 		if (targetLabel == introLabel)
@@ -105,7 +102,6 @@ public partial class terminalTextController : VBoxContainer
 		{
 			// Main dialogue: Type character by character
 			await TypeCharacterByCharacter(text, targetLabel);
-			scrollContainer.VerticalScrollMode = ScrollContainer.ScrollMode.Auto;
 			//Start Enter to Continue Prompt
 			ShowEnterToContinuePrompt();
 		}
@@ -128,9 +124,9 @@ public partial class terminalTextController : VBoxContainer
 		int ellipsisCount = 0;
 
 		continueLabel.Text = dialogueSequence.continueText;
-		ScrollToBottom();
 		isTyping = false;
-		scrollContainer.VerticalScrollMode = ScrollContainer.ScrollMode.Auto;
+		await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
+		ScrollToBottom();
 		while (showingContinuePrompt)
 		{
 			continueLabel.Text = dialogueSequence.continueText + new string('.', (ellipsisCount + 1) % 4);
@@ -159,7 +155,7 @@ public partial class terminalTextController : VBoxContainer
 		for (int i = 0; i < text.Length; i++)
 		{
 			targetLabel.Text += text[i];
-			
+			ScrollToBottom();
 			if (i < text.Length)
 			{
 				await ToSignal(GetTree().CreateTimer(characterDelay), SceneTreeTimer.SignalName.Timeout);

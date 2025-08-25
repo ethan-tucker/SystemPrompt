@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmx4aeg8luv1h"]
 
 [ext_resource type="FontFile" uid="uid://cy7o37k57kox1" path="res://Assets/Fonts/Source_Code_Pro/static/SourceCodePro-Regular-noMSDF.ttf" id="1_ye4tv"]
-[ext_resource type="StyleBox" uid="uid://dpgxjniwdbwjw" path="res://Scenes/SettingsMenu/SettingsSectionStyleBox.tres" id="2_du2a4"]
+[ext_resource type="StyleBox" uid="uid://dpgxjniwdbwjw" path="res://StyleBoxes/SettingsSectionStyleBox.tres" id="2_du2a4"]
 
 [node name="SettingsSection" type="VBoxContainer"]
 theme_override_constants/separation = 10

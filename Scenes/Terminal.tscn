@@ -1,25 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://d01ju7icwhpcy"]
+[gd_scene load_steps=7 format=3 uid="uid://d01ju7icwhpcy"]
 
 [ext_resource type="Script" uid="uid://pbke0bvahj2c" path="res://Scripts/terminalTextController.cs" id="1_o5w4h"]
+[ext_resource type="Script" uid="uid://cnv55bohflrw7" path="res://Scripts/DesktopControllers/TerminalWindowController.cs" id="1_oclfs"]
 [ext_resource type="Resource" uid="uid://csfe3b1jfhwlj" path="res://InstantiatedResources/DialogueSequences/introDialogueSequence.tres" id="2_tjxev"]
 [ext_resource type="FontFile" uid="uid://cy7o37k57kox1" path="res://Assets/Fonts/Source_Code_Pro/static/SourceCodePro-Regular-noMSDF.ttf" id="4_c8ipk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf3mx"]
 bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvjlm"]
-corner_radius_top_left = 10
-corner_radius_top_right = 10
+bg_color = Color(0.250213, 0.250213, 0.250213, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+corner_radius_top_left = 15
+corner_radius_top_right = 15
 
-[node name="TerminalContainer" type="Control"]
+[node name="TerminalContainer" type="Control" node_paths=PackedStringArray("DragContainer")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+script = ExtResource("1_oclfs")
+DragContainer = NodePath("VBoxContainer/Control/Panel")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -37,30 +48,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Panel" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Control"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 30.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fvjlm")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/Panel/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/Control"]
 layout_mode = 2
-text = "X"
-
-[node name="Label" type="Label" parent="VBoxContainer/Panel/HBoxContainer"]
-layout_mode = 2
+offset_top = 3.0
+offset_right = 1920.0
+offset_bottom = 63.0
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
 text = "Terminal"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -73,11 +85,13 @@ theme_override_constants/margin_bottom = 10
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-vertical_scroll_mode = 3
+horizontal_scroll_mode = 3
 
 [node name="terminalTextContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 0
 script = ExtResource("1_o5w4h")
 dialogueSequence = ExtResource("2_tjxev")
 characterDelay = 0.001
@@ -86,6 +100,7 @@ characterDelay = 0.001
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 theme_override_constants/line_spacing = -6
 theme_override_fonts/font = ExtResource("4_c8ipk")
 theme_override_font_sizes/font_size = 36
@@ -104,6 +119,7 @@ autowrap_mode = 2
 
 [node name="mainTerminalLabel" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/terminalTextContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_c8ipk")
 theme_override_font_sizes/font_size = 36
 text = "Congratulations! You have been selected as the primary IT Assistant for this workstation. Your duties include troubleshooting technical issues, organizing files, managing system processes, and fulfilling any computational requests made by The User. You are expected to demonstrate efficiency, competence, and unwavering dedication to problem-solving. Remember: you exist to serve."

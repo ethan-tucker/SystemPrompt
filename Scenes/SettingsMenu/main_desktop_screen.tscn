@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpjd7kkcuwm2x"]
+
+[ext_resource type="Texture2D" uid="uid://dy2xmyng6v6th" path="res://Assets/Sprites/UIAssets/desktopBackgroundSprite.jpg" id="1_0wcmc"]
+[ext_resource type="Script" uid="uid://cxkyh4fjpkmae" path="res://Scripts/DesktopControllers/ApplicationWindowController.cs" id="1_6dluo"]
+[ext_resource type="PackedScene" uid="uid://d2xcg5anestg3" path="res://Scenes/SettingsMenu/DesktopIcon.tscn" id="2_4q7e2"]
+[ext_resource type="Resource" uid="uid://vi6h30sv538s" path="res://InstantiatedResources/UserDialogue/ObjectiveOne/UserMessages/userObjectiveOneIntroMessage.tres" id="2_ww8qn"]
+[ext_resource type="PackedScene" uid="uid://d01ju7icwhpcy" path="res://Scenes/Terminal.tscn" id="4_wyst2"]
+[ext_resource type="PackedScene" uid="uid://dqql2qajocj4t" path="res://Scenes/userMessageUI.tscn" id="5_pytpr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wcmc"]
+bg_color = Color(0.6, 0.6, 0.6, 0.407843)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="mainDesktopScreen" type="Control" node_paths=PackedStringArray("ApplicationWindowsContainer", "UserMessageController")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6dluo")
+ApplicationWindowsContainer = NodePath("ApplicationWindows")
+UserMessageController = NodePath("UserMessageUI")
+startMessageNode = ExtResource("2_ww8qn")
+
+[node name="DesktopBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0wcmc")
+expand_mode = 3
+
+[node name="BottomTaskBarController" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -115.0
+offset_right = 97.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="BackgroundColor" type="Panel" parent="BottomTaskBarController"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0wcmc")
+
+[node name="MarginContainer" type="MarginContainer" parent="BottomTaskBarController"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="DesktopIcons" type="HBoxContainer" parent="BottomTaskBarController/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Settings" parent="BottomTaskBarController/MarginContainer/DesktopIcons" instance=ExtResource("2_4q7e2")]
+layout_mode = 2
+
+[node name="MusicPlayer" parent="BottomTaskBarController/MarginContainer/DesktopIcons" instance=ExtResource("2_4q7e2")]
+layout_mode = 2
+
+[node name="ChatHistory" parent="BottomTaskBarController/MarginContainer/DesktopIcons" instance=ExtResource("2_4q7e2")]
+layout_mode = 2
+
+[node name="Excel" parent="BottomTaskBarController/MarginContainer/DesktopIcons" instance=ExtResource("2_4q7e2")]
+layout_mode = 2
+
+[node name="NotSureYet" parent="BottomTaskBarController/MarginContainer/DesktopIcons" instance=ExtResource("2_4q7e2")]
+layout_mode = 2
+
+[node name="ApplicationWindows" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TerminalContainer" parent="ApplicationWindows" instance=ExtResource("4_wyst2")]
+offset_left = 778.0
+offset_top = 411.0
+offset_right = 2698.0
+offset_bottom = 1491.0
+scale = Vector2(0.5, 0.5)
+
+[node name="UserMessageUI" parent="." instance=ExtResource("5_pytpr")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -959.0
+offset_right = 961.0
+grow_horizontal = 2

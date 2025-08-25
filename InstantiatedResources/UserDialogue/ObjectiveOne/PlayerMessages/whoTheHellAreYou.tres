@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="MessageNode" load_steps=4 format=3 uid="uid://bnkenmq5iyin4"]
+
+[ext_resource type="Script" uid="uid://85spyvrwcthn" path="res://Resources/PlayerMessage.cs" id="1_7o25r"]
+[ext_resource type="Script" uid="uid://ckefb2sbdqv0l" path="res://Resources/MessageNode.cs" id="2_xcx0n"]
+
+[sub_resource type="Resource" id="Resource_xbwq6"]
+script = ExtResource("1_7o25r")
+messageCost = 1
+overrideMessageText = ""
+messageConditions = Array[int]([])
+chatOptionDisplayText = "Who are you???"
+messageText = "I look forward to helping you out with this problem! I am looking for the file now."
+metadata/_custom_type_script = "uid://85spyvrwcthn"
+
+[resource]
+script = ExtResource("2_xcx0n")
+messageIndex = 0
+messageType = 0
+messagePool = Array[Object]([SubResource("Resource_xbwq6")])
+metadata/_custom_type_script = "uid://ckefb2sbdqv0l"

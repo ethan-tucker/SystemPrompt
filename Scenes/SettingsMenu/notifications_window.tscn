@@ -5,15 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://1jegr05f0vfo" path="res://Scenes/SettingsMenu/ToggleButton.tscn" id="3_4j1tt"]
 [ext_resource type="PackedScene" uid="uid://bmx4aeg8luv1h" path="res://Scenes/SettingsMenu/settings_section.tscn" id="4_f8np8"]
 
-[node name="NotificationsWindow" type="Control"]
+[node name="NotificationsWindow" type="Control" node_paths=PackedStringArray("JCloudToggleContainer", "RealJCloudToggleContainer")]
 layout_mode = 3
-anchor_right = 0.234
-anchor_bottom = 0.694
-offset_right = 0.959961
-offset_bottom = 0.640015
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_wrn0r")
+JCloudToggleContainer = NodePath("MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/JCloudToggleContainer")
+RealJCloudToggleContainer = NodePath("MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/RealJCloudToggleContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -47,14 +49,20 @@ text = "General Notification Settings"
 [node name="ToggleButton" parent="MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer" index="0" instance=ExtResource("3_4j1tt")]
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton/MarginContainer/HBoxContainer" index="0"]
 text = "We couldn't turn them off"
+
+[node name="CheckButton" parent="MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton/MarginContainer/HBoxContainer/Control" index="0"]
+disabled = true
 
 [node name="ToggleButton2" parent="MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer" index="1" instance=ExtResource("3_4j1tt")]
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton2" index="0"]
-text = "Even if we wanted to :("
+[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton2/MarginContainer/HBoxContainer" index="0"]
+text = "Even if we wanted to"
+
+[node name="CheckButton" parent="MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton2/MarginContainer/HBoxContainer/Control" index="0"]
+disabled = true
 
 [node name="SettingsSection" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_f8np8")]
 layout_mode = 2
@@ -65,16 +73,20 @@ text = "Application Notifications"
 [node name="JCloudToggleContainer" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer" index="0" instance=ExtResource("3_4j1tt")]
 layout_mode = 2
 
-[node name="LuoDingoToggleContainer" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer" index="1" instance=ExtResource("3_4j1tt")]
+[node name="RealJCloudToggleContainer" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer" index="1" instance=ExtResource("3_4j1tt")]
+visible = false
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/LuoDingoToggleContainer" index="0"]
+[node name="LuoDingoToggleContainer" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer" index="2" instance=ExtResource("3_4j1tt")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/LuoDingoToggleContainer/MarginContainer/HBoxContainer" index="0"]
 text = "Luodingo"
 
-[node name="ToggleButton" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer" index="2" instance=ExtResource("3_4j1tt")]
+[node name="ToggleButton" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer" index="3" instance=ExtResource("3_4j1tt")]
 layout_mode = 2
 
-[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/ToggleButton" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/ToggleButton/MarginContainer/HBoxContainer" index="0"]
 text = "ZMail"
 
 [editable path="MarginContainer/VBoxContainer/SettingsSection2"]
@@ -82,5 +94,6 @@ text = "ZMail"
 [editable path="MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton2"]
 [editable path="MarginContainer/VBoxContainer/SettingsSection"]
 [editable path="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/JCloudToggleContainer"]
+[editable path="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/RealJCloudToggleContainer"]
 [editable path="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/LuoDingoToggleContainer"]
 [editable path="MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/ToggleButton"]

@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://catxguqooik6s"]
+
+[ext_resource type="Script" uid="uid://byig4lsfn5jq1" path="res://Scripts/MessageBubble.cs" id="1_3nk65"]
+[ext_resource type="FontFile" uid="uid://d0rbilredly70" path="res://Assets/Fonts/Source_Code_Pro/static/SourceCodePro-Medium-noMSDF.ttf" id="2_axuth"]
+[ext_resource type="Texture2D" uid="uid://dlyefpbn04l2i" path="res://Assets/Sprites/UIAssets/reply.png" id="3_qwphl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgoys"]
+bg_color = Color(0.177958, 0.523193, 0.83964, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="SentMessage" type="Control" node_paths=PackedStringArray("messageLabel", "hoverBox", "contentContainer", "replyButton", "messageContainer", "outerHBoxContainer")]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("1_3nk65")
+messageLabel = NodePath("HBoxContainer/Control/MarginContainer2/Label")
+hoverBox = NodePath("HBoxContainer/Control/Panel")
+contentContainer = NodePath("HBoxContainer/Control/MarginContainer2")
+replyButton = NodePath("HBoxContainer/ReplyButton")
+messageContainer = NodePath("HBoxContainer/Control")
+outerHBoxContainer = NodePath("HBoxContainer")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -834.0
+offset_bottom = 40.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Panel" type="Panel" parent="HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lgoys")
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer/Control/MarginContainer2"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_axuth")
+theme_override_font_sizes/normal_font_size = 24
+text = "testingintesing testingintesing testingintesing    "
+fit_content = true
+vertical_alignment = 1
+
+[node name="ReplyButton" type="TextureRect" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("3_qwphl")
+expand_mode = 3

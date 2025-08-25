@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqjmgfda2pfl7"]
+[gd_scene load_steps=8 format=3 uid="uid://bqjmgfda2pfl7"]
 
 [ext_resource type="Script" uid="uid://dbokeov4jr3ad" path="res://Scripts/SettingsWindow/SettingsManager.cs" id="1_7vxyt"]
 [ext_resource type="PackedScene" uid="uid://cdrnl6v8crffm" path="res://Scenes/SettingsMenu/SettingsTab.tscn" id="1_icv2g"]
 [ext_resource type="PackedScene" uid="uid://ilnf2f7hce5b" path="res://Scenes/SettingsMenu/notifications_window.tscn" id="2_1lds4"]
+[ext_resource type="Texture2D" uid="uid://bovtxcbsl56l4" path="res://Assets/Sprites/UIAssets/exitButton.png" id="2_o2k8u"]
+[ext_resource type="PackedScene" uid="uid://cf1m8bwa2i5et" path="res://Scenes/SettingsMenu/audio_window.tscn" id="4_ow57o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oerog"]
 bg_color = Color(0.208175, 0.208176, 0.194205, 1)
@@ -16,7 +18,7 @@ bg_color = Color(0.164706, 0.164706, 0.152941, 1)
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 
-[node name="SettingsMenu" type="Control"]
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("ExitButton", "SettingsTabContainer", "SettingsWindowContainer", "DragContainer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,7 +31,12 @@ offset_right = 488.0
 offset_bottom = 517.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_7vxyt")
+ExitButton = NodePath("DragHitBox/MarginContainer/ExitButton")
+SettingsTabContainer = NodePath("HBoxContainer/LeftSideBar/MarginContainer/VBoxContainer2/SettingsTabContainer")
+SettingsWindowContainer = NodePath("HBoxContainer/SettingsWindowContainer")
+DragContainer = NodePath("DragHitBox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -40,12 +47,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Panel" type="Panel" parent="HBoxContainer"]
+[node name="LeftSideBar" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_oerog")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftSideBar"]
 layout_mode = 2
 offset_right = 300.0
 offset_bottom = 1000.0
@@ -56,43 +64,72 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/LeftSideBar/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftSideBar/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="SettingsTab" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("_settingsManager") instance=ExtResource("1_icv2g")]
+[node name="SettingsTabContainer" type="VBoxContainer" parent="HBoxContainer/LeftSideBar/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="AudioSettingsTab" parent="HBoxContainer/LeftSideBar/MarginContainer/VBoxContainer2/SettingsTabContainer" node_paths=PackedStringArray("_settingsManager") instance=ExtResource("1_icv2g")]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 0
-_settingsManager = NodePath("../../../../..")
+SettingsWindowScene = ExtResource("4_ow57o")
+_settingsManager = NodePath("../../../../../..")
 
-[node name="SelectedBackgroundColor" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/SettingsTab/HBoxContainer/Control3" index="0"]
-visible = true
+[node name="Label" parent="HBoxContainer/LeftSideBar/MarginContainer/VBoxContainer2/SettingsTabContainer/AudioSettingsTab/HBoxContainer/Control3/Control3/Control" index="0"]
+text = "Audio"
 
-[node name="SettingsTab2" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("_settingsManager") instance=ExtResource("1_icv2g")]
+[node name="NotificationSettingsTab" parent="HBoxContainer/LeftSideBar/MarginContainer/VBoxContainer2/SettingsTabContainer" node_paths=PackedStringArray("_settingsManager") instance=ExtResource("1_icv2g")]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-_settingsManager = NodePath("../../../../..")
+SettingsWindowScene = ExtResource("2_1lds4")
+_settingsManager = NodePath("../../../../../..")
 
 [node name="SettingsWindowContainer" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ufg0w")
 
 [node name="NotificationsWindow" parent="HBoxContainer/SettingsWindowContainer" instance=ExtResource("2_1lds4")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
+mouse_filter = 2
 
-[node name="VBoxContainer" parent="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer" index="0"]
-theme_override_constants/separation = 0
+[node name="DragHitBox" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 900.0
+offset_bottom = 80.0
+mouse_filter = 1
 
-[editable path="HBoxContainer/Panel/MarginContainer/VBoxContainer/SettingsTab"]
-[editable path="HBoxContainer/Panel/MarginContainer/VBoxContainer/SettingsTab2"]
+[node name="MarginContainer" type="MarginContainer" parent="DragHitBox"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 60.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 5
+
+[node name="ExitButton" type="TextureRect" parent="DragHitBox/MarginContainer"]
+layout_mode = 2
+mouse_filter = 0
+texture = ExtResource("2_o2k8u")
+expand_mode = 2
+stretch_mode = 4
+
+[editable path="HBoxContainer/LeftSideBar/MarginContainer/VBoxContainer2/SettingsTabContainer/AudioSettingsTab"]
+[editable path="HBoxContainer/LeftSideBar/MarginContainer/VBoxContainer2/SettingsTabContainer/NotificationSettingsTab"]
 [editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow"]
 [editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection2"]
 [editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton"]
 [editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection2/OuterContainer/MarginContainer/VBoxContainer/ToggleButton2"]
 [editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection"]
+[editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/JCloudToggleContainer"]
+[editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/RealJCloudToggleContainer"]
+[editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/LuoDingoToggleContainer"]
+[editable path="HBoxContainer/SettingsWindowContainer/NotificationsWindow/MarginContainer/VBoxContainer/SettingsSection/OuterContainer/MarginContainer/VBoxContainer/ToggleButton"]

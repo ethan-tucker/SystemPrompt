@@ -1,20 +1,34 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class SettingsTab : Control
 {
     [Export] public PackedScene SettingsWindowScene { get; set; }
     [Export] public SettingsManager _settingsManager { get; set; }
-    
-    
-    public override void _Ready() {
-    }
-    
-    private void OnTabSelected()
+    [Export] public Panel ClickBox { get; set; }
+    private bool _isSelected = false;
+
+
+    public override void _Ready()
     {
-        if (SettingsWindowScene != null)
+        GD.Print("Setting up settings tab: " + SettingsWindowScene.ResourceName);
+        MouseFilter = Control.MouseFilterEnum.Pass;
+        GuiInput += OnTabSelected;
+    }
+
+    public void OnTabSelected(InputEvent @event)
+    {
+        if (SettingsWindowScene != null && @event.IsActionPressed("select") && !_isSelected)
         {
-            _settingsManager.ShowSettingsWindow(SettingsWindowScene);
+            _settingsManager.ShowSettingsWindow(this);
+            ToggleSelection(true);
         }
+    }
+
+    public void ToggleSelection(bool isSelected)
+    {
+        _isSelected = isSelected;
+        ClickBox.Visible = _isSelected;
     }
 }

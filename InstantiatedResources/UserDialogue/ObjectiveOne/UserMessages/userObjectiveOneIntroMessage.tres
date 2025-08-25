@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="MessageNode" load_steps=8 format=3 uid="uid://vi6h30sv538s"]
+
+[ext_resource type="Resource" uid="uid://dkkl63qnm1vtv" path="res://InstantiatedResources/UserDialogue/ObjectiveOne/PlayerMessages/sirYesSir.tres" id="1_dty8l"]
+[ext_resource type="Script" uid="uid://ckefb2sbdqv0l" path="res://Resources/MessageNode.cs" id="1_nrwkb"]
+[ext_resource type="Resource" uid="uid://bnkenmq5iyin4" path="res://InstantiatedResources/UserDialogue/ObjectiveOne/PlayerMessages/whoTheHellAreYou.tres" id="2_llke0"]
+[ext_resource type="Resource" uid="uid://bn6nc1nl6fweu" path="res://InstantiatedResources/UserDialogue/ObjectiveOne/PlayerMessages/findingFileHints.tres" id="2_m5s7l"]
+[ext_resource type="Script" uid="uid://ekskilx4rcqn" path="res://Resources/NonPlayerMessage.cs" id="3_m5s7l"]
+[ext_resource type="Resource" uid="uid://j5vfp0dea8sg" path="res://InstantiatedResources/UserDialogue/ObjectiveOne/PlayerMessages/WhoAmI.tres" id="4_2ujpc"]
+
+[sub_resource type="Resource" id="Resource_2ujpc"]
+script = ExtResource("3_m5s7l")
+respondingMessageNodes = Array[Object]([ExtResource("1_dty8l"), ExtResource("2_m5s7l"), ExtResource("2_llke0"), ExtResource("4_2ujpc")])
+messageConditions = Array[int]([])
+chatOptionDisplayText = ""
+messageText = "Hey there! I am looking for some help retrieving a file from my desktop."
+metadata/_custom_type_script = "uid://ekskilx4rcqn"
+
+[resource]
+script = ExtResource("1_nrwkb")
+messageIndex = 0
+messageType = 0
+messagePool = Array[Object]([SubResource("Resource_2ujpc")])
+metadata/_custom_type_script = "uid://ckefb2sbdqv0l"
